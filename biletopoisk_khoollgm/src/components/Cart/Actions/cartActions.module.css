@@ -1,0 +1,31 @@
+.actions {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  background-color: #ff5500;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ticketAmount {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: #e94e00;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  background-color: #ffa375;
+}

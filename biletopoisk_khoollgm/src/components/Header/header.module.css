@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: #333333;
+  z-index: 800;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  padding: 24px 32px;
+}
+
+.cartContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge {
+  background-color: #ff5500;
+  color: white;
+  border-radius: 8px;
+  padding: 4px;
+  font-size: 14px;
+  font-weight: bold;
+}

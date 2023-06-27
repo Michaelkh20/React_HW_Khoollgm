@@ -1,0 +1,19 @@
+.badge {
+  color: white;
+  border-radius: 5px;
+  padding: 4px;
+  font-size: inherit;
+  font-weight: bold;
+}
+
+.high_rating {
+  background-color: #3bb33b;
+}
+
+.medium_rating {
+  background-color: #777;
+}
+
+.low_rating {
+  background-color: red;
+}
