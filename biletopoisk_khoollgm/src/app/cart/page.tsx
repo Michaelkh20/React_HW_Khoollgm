@@ -19,6 +19,7 @@ export default function CartPage() {
   );
   const [movies, setMovies] = useState<MovieData[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<MovieData | null>(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,33 +37,37 @@ export default function CartPage() {
     fetchMovies();
   }, []);
 
-  const handleConfirm = useCallback(
-    (movieId: string) => {
-      dispatch(cartActions.decrement(movieId));
-      setIsModalOpen(false);
-      setMovies((movies) => movies.filter((movie) => movie.id !== movieId));
-    },
-    [dispatch]
-  );
+  const handleConfirm = useCallback(() => {
+    if (!itemToDelete) {
+      return;
+    }
+    dispatch(cartActions.delete(itemToDelete.id));
+    setIsModalOpen(false);
+    setMovies((movies) =>
+      movies.filter((movie) => movie.id !== itemToDelete.id)
+    );
+    setItemToDelete(null);
+  }, [dispatch, itemToDelete]);
 
   return (
     <div className={styles.container}>
       <div className={styles.moviesList}>
         {movies.map((movie) => (
-          <>
-            <MovieSmallCard
-              key={movie.id}
-              movie={movie}
-              handleDelete={() => setIsModalOpen(true)}
-            />
-            <Modal
-              isOpen={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-              onConfirm={() => handleConfirm(movie.id)}
-            />
-          </>
+          <MovieSmallCard
+            key={movie.id}
+            movie={movie}
+            handleDelete={() => {
+              setItemToDelete(movie);
+              setIsModalOpen(true);
+            }}
+          />
         ))}
       </div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={handleConfirm}
+      />
       <div className={styles.total}>
         <div>Итого билетов:</div>
         <div>{totalAmount}</div>

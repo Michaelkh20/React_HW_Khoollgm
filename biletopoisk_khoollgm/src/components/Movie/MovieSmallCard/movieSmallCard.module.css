@@ -1,6 +1,8 @@
 .card {
   display: flex;
   flex: 1;
+  box-sizing: border-box;
+  max-height: 168px;
   background-color: #ffffff;
   border-radius: 8px;
   padding: 24px;

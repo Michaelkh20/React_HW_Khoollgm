@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 24px 31px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
